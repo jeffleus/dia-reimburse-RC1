@@ -1,0 +1,10 @@
+<ion-view view-title="List">
+  <ion-content>
+    <h1>List</h1>
+	  <p>{{vm.message}}</p>
+	  <ion-list>
+		  <ion-item class="item-divider">Items</ion-item>
+		  <ion-item ng-repeat="item in vm.items" ng-click="gotoChild(item)">{{item}}</ion-item>
+	  </ion-list>
+  </ion-content>
+</ion-view>
