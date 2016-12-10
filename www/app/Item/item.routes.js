@@ -3,7 +3,7 @@
 
 // list.routes.js
 angular
-    .module('starter.routes', ['blocks.router'])
+    .module('starter.routes')
     .run(appRun);
 
 /* @ngInject */
