@@ -1,4 +1,4 @@
-angular.module('starter.services')
+angular.module('app.trips')
 
 .service('TripSvc', function($q, $log, Trip, Pouch) {
     var self = this;    

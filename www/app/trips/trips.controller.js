@@ -1,9 +1,9 @@
-angular.module('starter.controllers')
+angular.module('app.trips')
 
 .controller('TripsCtrl', function($scope, $ionicPopup, $ionicModal, $state
                                     , $ionicLoading, $cordovaEmailComposer, $ionicListDelegate
-                                    , TripSvc, ImageSvc, ReportSvc, EmailSvc, ReportMock
-                                    , Trip, TravelDate, AirfareExp, HotelExp, Receipt, Note
+                                    , TripSvc, ReportSvc, EmailSvc, ReportMock
+                                    , Trip, TravelDate, Receipt
                                     , SettingsSvc) {
     $scope.tripSvc = TripSvc;
     $scope.gotoTrip = _gotoTrip;
@@ -49,12 +49,6 @@ angular.module('starter.controllers')
         
         console.log('start: ' + trip.startDate.toLocaleDateString());
         console.log('end: ' + trip.endDate.toLocaleDateString());
-        
-//		_mockTravelDates(trip);
-//        _mockAirfare(trip);
-//        _mockHotel(trip);
-//        _mockReceipts(trip);
-//        _mockNotes(trip);
         
         return trip;
     }
@@ -151,7 +145,7 @@ angular.module('starter.controllers')
 //
 // MODAL - Add Trip Form
 //    
-    $ionicModal.fromTemplateUrl('templates/add-trip.html', {
+    $ionicModal.fromTemplateUrl('app/trips/add-trip.modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {

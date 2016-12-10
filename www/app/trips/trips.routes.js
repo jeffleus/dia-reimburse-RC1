@@ -3,7 +3,7 @@
 
 // trips.routes.js
 angular
-    .module('starter.routes')
+    .module('app.trips')
     .run(appRun);
 
 /* @ngInject */
