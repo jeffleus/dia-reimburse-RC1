@@ -1,7 +1,12 @@
+(function() {
+'use strict';
+
+var ctrl = 'TripsCtrl';
 angular.module('app.trips')
 
-.controller('TripsCtrl', function($scope, $ionicPopup, $ionicModal, $state
+.controller(ctrl, function($scope, $ionicPopup, $ionicModal, $state
                                     , $ionicLoading, $cordovaEmailComposer, $ionicListDelegate
+									, logger
                                     , TripSvc, ReportSvc, EmailSvc, ReportMock
                                     , Trip, TravelDate, Receipt
                                     , SettingsSvc) {
@@ -11,8 +16,9 @@ angular.module('app.trips')
     $scope.sendTrip = _sendTrip;
     $scope.$on('$ionicView.enter', function() { _init(); });
     $scope.$on('$ionicView.leave', function() { _save(); });
-    _init();
+    //_init();
     function _init() {
+		logger.info('Enter Controller: ' + ctrl);
 //
 // ReportSvc Event Listeners: Progress/Done
 //
@@ -25,6 +31,7 @@ angular.module('app.trips')
     }
     
     function _save() {
+		logger.info('Leave Controller: ' + ctrl);
         console.log('TripCtrl: saving tripSvc data to localStorage');
         TripSvc.pause();
     }
@@ -182,4 +189,4 @@ angular.module('app.trips')
         $ionicLoading.hide();
     }
 });
-
+})();
