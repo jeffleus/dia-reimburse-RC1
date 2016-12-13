@@ -10,10 +10,10 @@ angular.module('starter.controllers')
 	};
 	
 	$scope.$on('$ionicView.enter', function() {
-		$log.info(ctrl + '_enter');
+//		$log.info(ctrl + '_enter');
 	});
 	$scope.$on('$ionicView.leave', function() {
-		$log.info(ctrl + '_leave');
+//		$log.info(ctrl + '_leave');
 	});
 });
 })();
