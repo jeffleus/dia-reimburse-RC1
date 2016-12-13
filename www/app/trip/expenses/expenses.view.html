@@ -1,0 +1,10 @@
+<ion-view view-title="Trip-Expenses">
+  <ion-content>
+    <h1>Expenses Tab of Trip</h1>
+	  <p>{{vm.message}}</p>
+	  <ion-list>
+		  <ion-item class="item-divider">Travel Expenses</ion-item>
+		  <ion-item ng-repeat="item in vm.items" ng-click="gotoChild(item)">{{item}}</ion-item>
+	  </ion-list>
+  </ion-content>
+</ion-view>
