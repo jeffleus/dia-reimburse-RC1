@@ -19,6 +19,9 @@ angular.module('app.trips')
     //_init();
     function _init() {
 		logger.info('Enter Controller: ' + ctrl);
+		$scope.$on('TripSvc::ready', function(event, msg) {
+			$scope.$apply();
+		});		 
 //
 // ReportSvc Event Listeners: Progress/Done
 //
@@ -127,7 +130,7 @@ angular.module('app.trips')
         console.log('Set Current Trip --> ' + t.title);
         TripSvc.currentTrip = t;
 //        $state.go('app.single.expenses', {'playlistId':t.id});
-        $state.go('app.single.expenses', {'playlistId':1});
+        $state.go('app.trip.home');
     }
     
     function _deleteTrip(t) {

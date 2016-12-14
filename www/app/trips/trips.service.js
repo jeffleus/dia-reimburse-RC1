@@ -1,6 +1,6 @@
 angular.module('app.trips')
 
-.service('TripSvc', function($q, $log, Trip, Pouch) {
+.service('TripSvc', function($q, $log, $rootScope, Trip, Pouch) {
     var self = this;    
     self.trips = [];
     self.currentTrip = {};
@@ -147,7 +147,8 @@ angular.module('app.trips')
                     $log.info('This is not a trip doc: ' + tripData.doc._id); 
                     return false;
                 }
-            })
+            });
+            $rootScope.$broadcast('TripSvc::ready');
         } { return false;}
     }
     
