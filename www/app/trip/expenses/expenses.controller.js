@@ -202,7 +202,7 @@ angular.module('trip.expenses')
         //
         // Load Modal Content and Animation
         //
-        $ionicModal.fromTemplateUrl('app/expenses/meals/mealExpenseModal.html', {
+        $ionicModal.fromTemplateUrl('app/trip/expenses/meal/meal.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
           }).then(function(modal) {
