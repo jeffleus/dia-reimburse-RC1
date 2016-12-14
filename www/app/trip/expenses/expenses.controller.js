@@ -216,7 +216,7 @@ angular.module('trip.expenses')
         //
         // Load Modal Content and Animation
         //
-        $ionicModal.fromTemplateUrl('app/expenses/miscellaneous/miscExpenseModal.html', {
+        $ionicModal.fromTemplateUrl('app/trip/expenses/miscellaneous/miscellaneous.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
           }).then(function(modal) {
@@ -230,7 +230,7 @@ angular.module('trip.expenses')
         //
         // Load Modal Content and Animation
         //
-        $ionicModal.fromTemplateUrl('app/expenses/mileage/mileageExpenseModal.html', {
+        $ionicModal.fromTemplateUrl('app/trip/expenses/mileage/mileage.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
           }).then(function(modal) {
