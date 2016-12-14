@@ -1,6 +1,10 @@
+(function() {
+'use strict';
+
+var ctrl = 'SettingsCtrl';
 angular.module('starter.controllers')
 
-.controller('SettingsCtrl', function($scope, $log, SettingsSvc) {
+.controller(ctrl, function($scope, $log, SettingsSvc) {
     var self = this;
     $scope.vm = {};
     $scope.settingsSvc = SettingsSvc;
@@ -34,4 +38,4 @@ angular.module('starter.controllers')
         }
     }
 });
-
+})();
