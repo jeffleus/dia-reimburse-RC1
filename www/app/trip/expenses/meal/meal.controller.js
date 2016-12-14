@@ -1,15 +1,15 @@
-// meals.ctrl.js
+// meal.ctrl.js
 (function () {
 	'use strict';
 	var controllerId = 'MealCtrl';
 	
 	angular
 		.module('trip.expenses')
-		.controller(controllerId, hotelController);
+		.controller(controllerId, mealController);
 
-	hotelController.$inject = ['$scope', 'logger', 'MealExp', 'MealSvc', 'TripSvc'];
+	mealController.$inject = ['$scope', 'logger', 'MealExp', 'MealSvc', 'TripSvc'];
 	
-	function hotelController($scope, logger, MealExp, MealSvc, TripSvc) {
+	function mealController($scope, logger, MealExp, MealSvc, TripSvc) {
 		//controller state object to connect to form object in the view
 		$scope.vm = {};
 		$scope.$on('modal.shown', function() {
