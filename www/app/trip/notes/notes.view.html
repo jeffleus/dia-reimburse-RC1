@@ -1,10 +1,14 @@
-<ion-view view-title="Trip-Notes">
-  <ion-content>
-    <h1>Notes Tab of Trip</h1>
-	  <p>{{vm.message}}</p>
-	  <ion-list>
-		  <ion-item class="item-divider">Travel Notes</ion-item>
-		  <ion-item ng-repeat="item in vm.items" ng-click="gotoChild(item)">{{item}}</ion-item>
-	  </ion-list>
-  </ion-content>
+<ion-view title="Trip-Notes">
+	<ion-content class="has-header">
+        <ion-list can-swipe="true">
+            <ion-item ng-repeat="n in tripSvc.currentTrip.notes | orderBy:'noteDate'" ng-click="editNote(n)">
+                <b>{{n.noteDate | date:'shortDate'}}</b> - {{n.notes}}
+                <ion-option-button class="button-assertive"
+                                   ng-click="deleteNote(n)">
+                  Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+<div class="btn-add-expense" ng-click="addNote()"><i class="ion-plus-circled"></i></div>
 </ion-view>
