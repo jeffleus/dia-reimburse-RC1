@@ -7,7 +7,7 @@
 		.module('trip.expenses')
 		.controller(controllerId, transportationController);
 
-	transportationController.$inject = ['$scope', 'logger', 'MiscExp', 'MiscSvc', 'TripSvc'];
+	transportationController.$inject = ['$scope', 'logger', 'TransportationExp', 'TripSvc'];
 	
 	function transportationController($scope, logger, TransportationExp, TripSvc) {
     
