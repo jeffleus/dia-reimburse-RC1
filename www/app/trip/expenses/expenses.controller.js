@@ -188,7 +188,7 @@ angular.module('trip.expenses')
         //
         // Load Modal Content and Animation
         //
-        $ionicModal.fromTemplateUrl('app/expenses/transportation/transportationExpenseModal.html', {
+        $ionicModal.fromTemplateUrl('app/trip/expenses/transportation/transportation.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
           }).then(function(modal) {
