@@ -6,9 +6,9 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ngCordova', 'blocks', 'starter.routes', 'starter.controllers'
                            , 'app.trips', 'app.settings', 'app.reports'
-						   , 'trip.expenses'])
+                           , 'app.trip', 'app.version'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, SettingsSvc, TripSvc) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -21,6 +21,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'blocks', 'starter.routes', 'st
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    SettingsSvc.resume();
+    TripSvc.resume();        
   });
 })
 
