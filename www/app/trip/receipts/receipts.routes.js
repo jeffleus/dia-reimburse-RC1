@@ -24,6 +24,18 @@ function getStates() {
                     }        
                 }
             }
+        },
+        {
+            state: 'app.image',
+            config: {
+                url: '/image',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'app/trip/receipts/receipt.view.html',
+                        controller: 'ReceiptCtrl'
+                    }        
+                }
+            }
         }
     ];
 }

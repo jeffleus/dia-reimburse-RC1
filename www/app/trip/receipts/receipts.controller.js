@@ -91,7 +91,7 @@
 			ReceiptSvc.currentReceipt = r;
 			ImageSvc.currentImage = r.image;        
 	//        ImageSvc.currentImage = ImageSvc.images[$index];
-			$state.go('app.browse');
+			$state.go('app.image');
 		}
 
 		function _takePicture(useLibrary) {
@@ -104,8 +104,8 @@
 
 				//ImageSvc.currentImage.imageData = file;
 				ReceiptSvc.currentReceipt = r;            
-				//navigate to the receipt viewer at the 'app.browse' route
-				$state.go('app.browse');            
+				//navigate to the receipt viewer at the 'app.image' route
+				$state.go('app.image');            
 			}).catch(function(err) {
 				console.error(err);
 			});
@@ -185,8 +185,8 @@
 
 	//            TripSvc.currentTrip.addReceipt(r);
 				ReceiptSvc.currentReceipt = r;
-				//navigate to the receipt viewer at the 'app.browse' route
-					$state.go('app.browse');
+				//navigate to the receipt viewer at the 'app.image' route
+					$state.go('app.image');
 			}).catch(function(err){
 				console.error('There was a problem taking a picture!');
 			});
@@ -261,8 +261,8 @@
 	//            ReceiptSvc.currentReceipt = r;
 	////            ImageSvc.currentImage = r.image;
 	////            TripSvc.pause();
-	//            //navigate to the receipt viewer at the 'app.browse' route
-	//            $state.go('app.browse');            
+	//            //navigate to the receipt viewer at the 'app.image' route
+	//            $state.go('app.image');            
 	//        })
 	//        .catch(function(error) {
 	//            console.error('_takePicture error: ' + error);

@@ -26,8 +26,8 @@
 
 		$scope.$on('$ionicView.enter', function(event, data) {
 			logger.info(ctrl + '_enter');
-			_init();
 		});	
+        
 		$scope.$on('$ionicView.leave', function(event, data) {
 			logger.info(ctrl + '_leave');
 			TripSvc.pause();
@@ -36,7 +36,7 @@
 		function _gotoReceipts(t) {
 			return TripSvc.currentTrip.addReceipt(ReceiptSvc.currentReceipt, ImageSvc.currentImage.imageFile)
 				.then(function(imgUrl) {
-					$state.go('app.single.receipts', {'playlistId':TripSvc.currentTrip.id});
+					$state.go('app.trip.receipts', {'playlistId':TripSvc.currentTrip.id});
 				});
 		}
 
@@ -56,11 +56,12 @@
 			if (ReceiptSvc.currentReceipt.isNewReceipt) {
 				return TripSvc.currentTrip.addReceipt(ReceiptSvc.currentReceipt, ImageSvc.currentImage.imageFile)
 					.then(function(imgUrl) {
-						$state.go('app.single.receipts', {'playlistId':TripSvc.currentTrip.id});
+						$state.go('app.trip.receipts');
 					});            
 			} else {
 				return TripSvc.saveTrip(TripSvc.currentTrip).then(function(){
 					ReceiptSvc.currentReceipt.isNewReceipt = false;
+                    $state.go('app.trip.receipts');
 				})
 			}
 		}
