@@ -384,6 +384,7 @@ angular.module('app.trips')
 			}).then(function(result) {
                 //update the trip doc to use the new rev after saving w/ new receipt
 				self._rev = result.rev;
+                self.isNewReceipt = false;
 				return receiptResult.imageUrl; 
 			}).catch(function(err) {
                 //rollback the receiptIndex if there is a problem
