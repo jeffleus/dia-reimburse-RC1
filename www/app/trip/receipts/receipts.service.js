@@ -19,6 +19,7 @@
 			this.image = "";
 
 			if (data) {
+                self.isNewReceipt = false;
 				self.title = data.title;
 				self.vendor = data.vendor;
 				self.description = data.description;
