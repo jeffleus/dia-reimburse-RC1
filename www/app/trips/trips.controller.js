@@ -64,8 +64,7 @@ angular.module('app.trips')
     }
 	
 	function _sendTrip(t) {
-        var t = TripSvc.currentTrip;
-        
+//        var t = TripSvc.currentTrip;        
         if (_validateTrip(t)) {
             $q.when(_confirmNoReceipts(t)).then(function(res) {
                 var reportPath = "";
@@ -101,7 +100,7 @@ angular.module('app.trips')
     function _validateTrip(t) {
         var isValid = true;
         isValid = isValid && (t.purpose && t.purpose.length > 0);
-        isValid = isValid && (t.startDate);
+        isValid = isValid && (!!t.startDate);
         return isValid;
     }
     
