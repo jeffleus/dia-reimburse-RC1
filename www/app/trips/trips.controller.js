@@ -4,7 +4,7 @@
 var ctrl = 'TripsCtrl';
 angular.module('app.trips')
 
-.controller(ctrl, function($scope, $ionicPopup, $ionicModal, $state
+.controller(ctrl, function($scope, $q, $state, $ionicPopup, $ionicModal
                                     , $ionicLoading, $cordovaEmailComposer, $ionicListDelegate
 									, logger
                                     , TripSvc, ReportSvc, EmailSvc, ReportMock
@@ -67,7 +67,7 @@ angular.module('app.trips')
         var t = TripSvc.currentTrip;
         
         if (_validateTrip(t)) {
-            _confirmNoReceipts(t).then(function(res) {
+            $q.when(_confirmNoReceipts(t)).then(function(res) {
                 var reportPath = "";
             
                 if (res) {
