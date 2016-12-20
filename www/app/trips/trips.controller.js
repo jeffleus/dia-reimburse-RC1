@@ -82,7 +82,7 @@ angular.module('app.trips')
                     }).then(function(res) {
                         console.log('drafting email to send report');
                         return EmailSvc
-                            .sendEmail(TripSvc.currentTrip, reportPath);
+                            .sendEmail(t, reportPath);
                     }).then(function() {
                         //$state.go('app.trips');
                         $ionicListDelegate.closeOptionButtons();
