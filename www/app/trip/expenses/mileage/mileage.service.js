@@ -15,7 +15,7 @@
             this.placesVisited = "";
 
             Object.defineProperty(this, 'rate', {
-              get: function() { return self.isCourtesyCar ? 0.36 : 0.54; }
+              get: function() { return self.isCourtesyCar ? 0.36 : 0.535; }
             });
 
             Object.defineProperty(this, 'amount', {
