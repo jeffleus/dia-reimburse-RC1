@@ -51,8 +51,8 @@ angular.module('app.reports')
     }
     
     function processTraveler(t) {
-//        var fullName = SettingsSvc.firstName + ' ' + SettingsSvc.lastName;
-        var fullName = 'Joe Bruin';
+        var fullName = (SettingsSvc.firstName || '') + ' ' + (SettingsSvc.lastName || '');
+//        var fullName = 'Joe Bruin';
         var notes = _.reduce(_.sortBy(t.notes, 'noteDate'), 
                             function(memo, note) { 
                                 return memo + '\n(' + moment(note.noteDate).format("MM-DD-YY") + ')-' + note.notes;
@@ -68,7 +68,7 @@ angular.module('app.reports')
 										[{text:'Full Name',style:'tableHeader'}, 
                                             {text:'Sport/Functional Area',style:'tableHeader'}, 
                                             {text:'Email',style:'tableHeader'}],
-										[fullName, 'Game Mgmt', 'travel@athletics.ucla.edu'],
+										[fullName, SettingsSvc.department, SettingsSvc.email],
                                         [{"text":"Trip Type","style":"tableHeader"},
                                             {"text":"Home City","style":"tableHeader"},
                                             {"text":"Vehicle Used","style":"tableHeader"}],
