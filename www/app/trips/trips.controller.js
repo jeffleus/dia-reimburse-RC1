@@ -66,7 +66,13 @@ angular.module('app.trips')
 	function _sendTrip(t) {
 //        var t = TripSvc.currentTrip;        
         if (_validateTrip(t)) {
-            $q.when(_confirmNoReceipts(t)).then(function(res) {
+            _confirmProfileEmail().then(function(res) {
+                if (res) {
+                    return _confirmNoReceipts(t);
+                }
+                else { return $q.when( false );}
+            }).then(function(res) {
+//            $q.when(_confirmNoReceipts(t)).then(function(res) {
                 var reportPath = "";
             
                 if (res) {
@@ -115,6 +121,20 @@ angular.module('app.trips')
 
         } else {
             return true;
+        }        
+    }
+    
+    function _confirmProfileEmail() {
+        if (!SettingsSvc.email || SettingsSvc.email.length < 7) {
+            var confirmOptions = {
+              title: 'No Email', // String. The title of the popup.
+              template: 'You do not appear to have a valid email address listed in your settings.  Please input a valid email in settings before proceeding.'
+            };
+            
+            return $ionicPopup.alert( confirmOptions ).then(function() { return false; });
+
+        } else {
+            return $q.when(true);
         }        
     }
     
