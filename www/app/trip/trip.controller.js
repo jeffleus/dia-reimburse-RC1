@@ -4,7 +4,7 @@
 var ctrl = 'TripCtrl';
 angular.module('app.trip')
 
-.controller(ctrl, function($scope, $log, $q, $ionicPopup
+.controller(ctrl, function($scope, $log, $q, $state, $ionicPopup
                             , SettingsSvc, TripSvc, EmailSvc, ReportSvc) {
 	$scope.vm = {
 		message: 'This is a tabbed trip controller from the menu.'
@@ -59,6 +59,8 @@ angular.module('app.trip')
                     return EmailSvc
                         .sendEmail(TripSvc.currentTrip, reportPath);                        
                 }).then(function() {
+                    t.isSubmitted = true;
+                    t.save();
                     $state.go('app.trips');
                 });                            
             } else {

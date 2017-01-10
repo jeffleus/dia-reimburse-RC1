@@ -79,7 +79,6 @@ angular.module('app.trips')
                     return ReportSvc.runReportAsync(t)
                     .then(function(filePath) {
                         reportPath = filePath;
-                        t.isSubmitted = true;
                         return $ionicPopup.alert({ 
                             title: 'Trip Total', 
                             template: 'A report was generated for your trip totalling $' 
@@ -90,6 +89,8 @@ angular.module('app.trips')
                         return EmailSvc
                             .sendEmail(t, reportPath);
                     }).then(function() {
+                        t.isSubmitted = true;
+                        t.save();
                         //$state.go('app.trips');
                         $ionicListDelegate.closeOptionButtons();
                     });
