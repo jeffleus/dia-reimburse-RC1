@@ -81,7 +81,7 @@ angular.module('app.trips')
                         reportPath = filePath;
                         return $ionicPopup.alert({ 
                             title: 'Trip Total', 
-                            template: 'A report was generated for your trip totalling $' 
+                            template: 'A report was generated for your trip totaling $' 
                                 + t.totalExpenses() + '.  An email is being drafted with the report attached for completing your submission to the travel office.' 
                         });
                     }).then(function(res) {
