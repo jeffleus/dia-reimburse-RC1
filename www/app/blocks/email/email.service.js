@@ -15,7 +15,7 @@ angular.module('blocks.email')
             
             var attachments = [ file ];
 //            attachments = attachments.concat(_receiptArray(t));
-            var attachments = [];
+//            var attachments = [];
             _receiptArray(t).then(function(imageArray) {
                 attachments = attachments.concat(imageArray);
                 return attachments;

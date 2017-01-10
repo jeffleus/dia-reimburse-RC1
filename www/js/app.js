@@ -34,27 +34,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'blocks', 'starter.routes', 'st
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
-  })
-
-  .state('app.child', {
-	  url: '/child',
-	  views: {
-		  'menuContent': {
-			  templateUrl: 'app/Child/childView.html',
-			  controller: 'ChildCtrl'
-		  }
-	  }
-  })
-  
-  .state('app.gchild', {
-	  url: '/gchild',
-	  views: {
-		  'menuContent': {
-			  templateUrl: 'app/GChild/gchildView.html',
-			  controller: 'GChildCtrl'
-		  }
-	  }
   });
+    
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/item');
+  $urlRouterProvider.otherwise('/app/trips');
 });

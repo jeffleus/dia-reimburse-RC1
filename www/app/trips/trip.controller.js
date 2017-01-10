@@ -4,14 +4,14 @@
 var ctrl = 'TripCtrl';
 angular.module('app.trips')
 
-.controller(ctrl, function($scope, $state) {
+.controller(ctrl, function($scope, $state, logger) {
     $scope.gotoTrips = _gotoTrips;
     
 	$scope.$on('$ionicView.enter', function() {
-		$log.info('Enter Controller: ' + ctrl);
+		logger.info('Enter Controller: ' + ctrl);
 	});
 	$scope.$on('$ionicView.leave', function() {
-		$log.info('Leave Controller: ' + ctrl);
+		logger.info('Leave Controller: ' + ctrl);
 	});
     
     function _gotoTrips() {
