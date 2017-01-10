@@ -1,4 +1,7 @@
 <ion-view title="Trip-Notes">
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced" ng-click="sendTrip()">submit</button>
+    </ion-nav-buttons>
 	<ion-content class="has-header">
         <ion-list can-swipe="true">
             <ion-item ng-repeat="n in tripSvc.currentTrip.notes | orderBy:'noteDate'" ng-click="editNote(n)">
