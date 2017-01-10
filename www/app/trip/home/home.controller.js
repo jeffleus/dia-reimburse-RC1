@@ -9,7 +9,7 @@
 		$scope.vm = {};
 		$scope.tripSvc = TripSvc;
 		$scope.addDestination = _toggleSubmitted;
-		$scope.sendTrip = _sendTrip;
+//		$scope.sendTrip = _sendTrip;
 		$scope.gotoTrips = _gotoTrips;
 
 		$scope.$on('$ionicView.enter', function(event, data) {
@@ -48,23 +48,6 @@
 
 		function _toggleSubmitted() {
 			TripSvc.currentTrip.isSubmitted = !TripSvc.currentTrip.isSubmitted;
-		}
-
-		function _sendTrip() {
-			ReportSvc
-				.runReportAsync(TripSvc.currentTrip)
-				.then(function(filePath) {
-	//				console.log('new async report routine');
-	//				showLoading('Opening Report...');
-					console.log('drafting email to send report');
-	//				_sendEmail(filePath);
-					TripSvc.currentTrip.isSubmitted = true;
-					EmailSvc
-						.sendEmail(TripSvc.currentTrip, filePath)
-						.then(function() {
-							$state.go('app.trips');
-						});
-				});
 		}
 
 		function _gotoTrips() {

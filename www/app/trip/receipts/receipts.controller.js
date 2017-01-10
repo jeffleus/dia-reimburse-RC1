@@ -11,7 +11,7 @@
 		$scope.deleteReceipt = _deleteReceipt;
 		$scope.selectImage = _selectImage;
 		$scope.takePicture = _takePicture;
-		$scope.sendTrip = _sendTrip;
+//		$scope.sendTrip = _sendTrip;
 		$scope.tripSvc = TripSvc;
 		$scope.imageSvc = ImageSvc;
 		$scope.docFolder = (!window.cordova)?'':cordova.file.documentsDirectory;
@@ -286,20 +286,6 @@
 					reject(error);
 				});
 			});
-		}
-
-		function _sendTrip() {
-			ReportSvc
-				.runReportAsync(TripSvc.currentTrip)
-				.then(function(filePath) {
-					console.log('drafting email to send report');
-					TripSvc.currentTrip.isSubmitted = true;
-					EmailSvc
-						.sendEmail(TripSvc.currentTrip, filePath)
-						.then(function() {
-							$state.go('app.trips');
-						});
-				});
 		}
 
 		function getMaxFilename(dirEntry) {
