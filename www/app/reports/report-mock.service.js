@@ -3,7 +3,7 @@
 
 angular.module('app.reports')
 
-.service('ReportMock', function() {
+.service('ReportMock', function(SettingsSvc) {
     var self = this;
     self.docDef = {};
     self.processTrip = _processTrip;
