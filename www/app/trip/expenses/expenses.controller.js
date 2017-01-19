@@ -66,7 +66,7 @@ angular.module('trip.expenses')
             buttonClicked: function(index) {
                 hideSheet();
                 console.log('expense modal index: ' + index);
-                if (index == 6) $state.go('app.single.dates');
+                if (index == 6) $state.go('app.trip.dates');
                 _showExpenseModal(index);
                 return true;
             }
