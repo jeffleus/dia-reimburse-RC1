@@ -97,15 +97,17 @@
 		function _takePicture(useLibrary) {
 			ImageSvc.takePicture(useLibrary)
 			.then(function(file) {
-				var r = new Receipt();
-				r.trip_id = TripSvc.currentTrip._id;
-				r.attachmentId = file.name;
-				r.imageUrl = ImageSvc.currentImage.imageData;
+                if (file) {
+                    var r = new Receipt();
+                    r.trip_id = TripSvc.currentTrip._id;
+                    r.attachmentId = file.name;
+                    r.imageUrl = ImageSvc.currentImage.imageData;
 
-				//ImageSvc.currentImage.imageData = file;
-				ReceiptSvc.currentReceipt = r;            
-				//navigate to the receipt viewer at the 'app.image' route
-				$state.go('app.image');            
+                    //ImageSvc.currentImage.imageData = file;
+                    ReceiptSvc.currentReceipt = r;            
+                    //navigate to the receipt viewer at the 'app.image' route
+                    $state.go('app.image');            
+                }
 			}).catch(function(err) {
 				console.error(err);
 			});
