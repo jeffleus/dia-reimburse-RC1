@@ -5,7 +5,7 @@
 	angular.module('trip.home')
 
 	.controller('HomeCtrl', function($scope, $rootScope, logger, $timeout, $ionicPopup, $state
-										 , $cordovaEmailComposer, ReportSvc, EmailSvc, TripSvc) {
+										 , TripSvc) {
 		$scope.vm = {};
 		$scope.tripSvc = TripSvc;
 		$scope.addDestination = _toggleSubmitted;
