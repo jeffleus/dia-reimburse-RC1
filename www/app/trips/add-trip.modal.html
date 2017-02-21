@@ -1,16 +1,16 @@
   <div class="modal">
-    <ion-header-bar>
+    <ion-header-bar class="bar-energized">
 		<div class="buttons">
-			<button class="button" ng-click="closeModal()">Cancel</button>
+			<button class="button button-positive" ng-click="closeModal()">Cancel</button>
 		</div>
-		<h1 class="title balanced">Add Trip</h1>
+		<h1 class="title">Add Trip</h1>
 		<div class="buttons">
-			<button class="button" ng-click="addTrip()">Save</button>
+			<button class="button button-positive" ng-click="addTrip()">Save</button>
 		</div>
     </ion-header-bar>
     <ion-content class="has-header">
         <ion-list>            
-            <ion-item class="item-divider item-icon-right">
+            <ion-item class="item-divider item-positive">
                 Trip Details</ion-item>
             <ion-item class="item-input">
                 <span class="input-label">Title</span>
@@ -35,7 +35,7 @@
                     <option>Univ Vehicle</option>
                     <option>Other</option>
                 </select></ion-item>
-            <ion-item class="item-divider item-icon-right">
+            <ion-item class="item-divider item-positive">
                 Destinations
 <!--                <i class="icon ion-plus-circled assertive" ng-click="addDestination()"></i>-->
             </ion-item>
@@ -44,7 +44,7 @@
                 <ul><li ng-repeat="d in newTrip.destinations">{{d.title}}</li>
                 </ul>
 -->
-                <textarea style="66px;" ng-model="newTrip.destinations"></textarea>
+                <textarea style="width:100%;" ng-model="newTrip.destinations"></textarea>
             </ion-item>
         </ion-list>
     </ion-content>
