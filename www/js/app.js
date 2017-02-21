@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ngCordova', 'blocks', 'starter.routes', 'starter.controllers'
+angular.module('starter', ['ionic', 'ngCordova', 'blocks', 'starter.routes', 'starter.controllers', 'starter.directives'
                            , 'app.trips', 'app.settings', 'app.reports'
                            , 'app.trip', 'app.version'])
 
@@ -13,7 +13,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'blocks', 'starter.routes', 'st
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
