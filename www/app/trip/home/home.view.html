@@ -1,6 +1,6 @@
 <ion-view title="Trip-Home">
     <ion-nav-buttons side="right">
-        <button class="button button-balanced" ng-click="sendTrip()">submit</button>
+        <button class="button button-balanced" ng-click="sendTrip()" ng-click-debounce>submit</button>
     </ion-nav-buttons>
 	<ion-content class="has-header" scroll="false">
         <ion-list ng-form="vm.tripForm">            
@@ -31,10 +31,9 @@
                     <option>Other</option>
                 </select></ion-item>
             <ion-item class="item-divider item-icon-right">
-                Destinations
-<!--                <i class="icon ion-plus-circled assertive" ng-click="addDestination()"></i></ion-item>-->
+                Destinations</ion-item>
             <ion-item>
-                <textarea style="height:66px;" ng-model="tripSvc.currentTrip.destinations"></textarea>
+                <textarea style="width:100%;" ng-model="tripSvc.currentTrip.destinations"></textarea>
             </ion-item>
         </ion-list>
     </ion-content>

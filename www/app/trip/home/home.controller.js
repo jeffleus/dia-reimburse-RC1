@@ -11,6 +11,7 @@
 		$scope.addDestination = _toggleSubmitted;
 //		$scope.sendTrip = _sendTrip;
 		$scope.gotoTrips = _gotoTrips;
+//        $scope.test = function() { console.log('testing debounce'); };
 
 		$scope.$on('$ionicView.enter', function(event, data) {
 			logger.info(ctrl + '_enter');

@@ -1,6 +1,6 @@
 <ion-view view-title="Trips">
     <ion-nav-buttons side="right">
-      <button class="button" ng-click="openModal()">ADD</button>
+      <button class="button button-energized" ng-click="openModal()">ADD</button>
     </ion-nav-buttons>
   <ion-content>
       <ion-list can-swipe="true">
@@ -29,7 +29,7 @@
                 ${{t.totalExpenses()}}
             </span>
         <ion-option-button class="button-balanced"
-                           ng-click="sendTrip(t)">
+                           ng-click="sendTrip(t)" ng-click-debounce>
           Submit
         </ion-option-button>
         <ion-option-button class="button-assertive"
