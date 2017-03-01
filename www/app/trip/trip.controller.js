@@ -62,6 +62,8 @@ angular.module('app.trip')
                     t.isSubmitted = true;
                     t.save();
                     $state.go('app.trips');
+                }).catch(function(e) {
+                    alert('There was an error generating the report for emailing.\n' + e);
                 });                            
             } else {
                 console.log('no receipts, trip submit cancelled...');

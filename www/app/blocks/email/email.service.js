@@ -16,7 +16,7 @@ angular.module('blocks.email')
             var attachments = [ file ];
 //            attachments = attachments.concat(_receiptArray(t));
 //            var attachments = [];
-            _receiptArray(t).then(function(imageArray) {
+            return _receiptArray(t).then(function(imageArray) {
                 attachments = attachments.concat(imageArray);
                 return attachments;
             }).then(function(attachments) {
@@ -32,7 +32,9 @@ angular.module('blocks.email')
                     // user cancelled email
                     console.log('user canceled the email send');
                 });                
-            })            
+            }).catch(function(e) {
+                console.info('There was a problem processing the array of image receipts...');
+            });            
 
 		}).catch(function (error) {
 		   // not available
@@ -46,6 +48,7 @@ angular.module('blocks.email')
         if (t && t.receipts) {
             t.receipts.forEach(function(r) {
                 chain = chain.then(function() {
+                    throw new Error('Simulated a failed image...');
                     return _getAttachmentBlob(r, t);
                 }).then(function(blob) {
                     return _convertToBase64(blob);

@@ -48,10 +48,15 @@
     function extendExceptionHandler($delegate, exceptionHandler, $injector) {
         return function(exception, cause) {
             var logger = $injector.get('logger');
-            var $cordovaToast = $injector.get('$cordovaToast');
+            //var $cordovaToast = $injector.get('$cordovaToast');
+            var $ionicPopup = $injector.get('$ionicPopup');
             var appErrorPrefix = exceptionHandler.config.appErrorPrefix || '';
             var errorData = {exception: exception, cause: cause};
             exception.message = appErrorPrefix + exception.message;
+            $ionicPopup.alert({
+                title: 'Unhandled Exception',
+                template: exception.message
+            });
             $delegate(exception, cause);
             /**
              * Could add the error to a service's collection,
@@ -63,7 +68,7 @@
              *     throw { message: 'error message we added' };
              */
             logger.error(exception.message, errorData);
-            $cordovaToast.show(exception.message);
+            //$cordovaToast.show(exception.message);
         };
     }
 })();
