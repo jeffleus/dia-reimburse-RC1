@@ -29,14 +29,15 @@ angular.module('blocks.email')
                     attachments: attachments
                 };
 
-                return $cordovaEmailComposer.open(email).catch(function(error) {
-                    // user cancelled email
-                    console.log('user canceled the email send');
-                    return $q.reject(error);
-                });                
+                return $cordovaEmailComposer.open(email);
+                
             }).catch(function(e) {
-                console.info('There was a problem processing the array of image receipts...');
-                return $q.reject(e);
+                if (typeof(e) == 'undefined') {
+                    return $q.resolve();
+                } else {
+                    console.error('problem in the email service for _sendEmail()');
+                    return $q.reject(e);                    
+                }
             });            
 
 		}).catch(function (error) {
