@@ -93,7 +93,15 @@ angular.module('app.trips')
                         t.save();
                         //$state.go('app.trips');
                         $ionicListDelegate.closeOptionButtons();
-                    });
+                    }).catch(function(e) {
+                        //make sure to close the swiped buttons
+                        $ionicListDelegate.closeOptionButtons();
+                        $ionicPopup.alert({
+                            title: 'Submission Problem',
+                            template: 'There was a problem preparing your trip report email for submission.  Please check your receipts.'
+                        });
+                        return $q.reject(e);
+                    });                            
                 }
             });
         } else {

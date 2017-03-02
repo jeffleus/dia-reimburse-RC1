@@ -35,7 +35,7 @@ angular.module('app.trip')
 	function _sendTrip() {
         var t = TripSvc.currentTrip;
         
-        _confirmProfileEmail().then(function(res) {
+        return _confirmProfileEmail().then(function(res) {
             if (res) {
                 return _confirmNoReceipts(t);
             }
@@ -63,12 +63,16 @@ angular.module('app.trip')
                     t.save();
                     $state.go('app.trips');
                 }).catch(function(e) {
-                    alert('There was an error generating the report for emailing.\n' + e);
+                    console.info('ok, the error made it back to the _sendTrip starting pt.');
+                    $ionicPopup.alert({
+                        title: 'Submission Problem',
+                        template: 'There was a problem preparing your trip report email for submission.  Please check your receipts.'
+                    });
+                    return $q.reject(e);
                 });                            
             } else {
                 console.log('no receipts, trip submit cancelled...');
             }
-
         });        
 	}
     
