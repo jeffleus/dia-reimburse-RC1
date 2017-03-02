@@ -4,10 +4,11 @@
 var ctrl = 'SettingsCtrl';
 angular.module('starter.controllers')
 
-.controller(ctrl, function($scope, $log, SettingsSvc) {
+.controller(ctrl, function($scope, $log, $fileLogger, $ionicPopup, $ionicListDelegate, SettingsSvc, EmailSvc) {
     var self = this;
     $scope.vm = {};
     $scope.settingsSvc = SettingsSvc;
+    $scope.viewLog = _viewLog;
     
     $scope.$on('$ionicView.enter', function() { 
         _init(); 
@@ -36,6 +37,18 @@ angular.module('starter.controllers')
                     $log.error(err);
                 });
         }
+    }
+    
+    function _viewLog() {
+        EmailSvc.sendLogfile()
+        .catch(function(e) {
+            $ionicPopup({
+                title: 'Problem with Logfile',
+                template: e
+            });
+        }).finally(function() {
+            $ionicListDelegate.closeOptionButtons();
+        });
     }
 });
 })();
