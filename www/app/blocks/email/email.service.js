@@ -69,7 +69,6 @@ angular.module('blocks.email')
         if (t && t.receipts) {
             t.receipts.forEach(function(r) {
                 chain = chain.then(function() {
-                    throw new Error('this is a dummy problem inserted during image attach...')
                     return _getAttachmentBlob(r, t);
                 }).then(function(blob) {
                     return _convertToBase64(blob);
