@@ -1,8 +1,9 @@
 angular.module('blocks.email')
 
-.service('EmailSvc', function($q, $cordovaEmailComposer, Pouch) {
+.service('EmailSvc', function($q, $fileLogger, $cordovaEmailComposer, Pouch) {
     var self = this;    
-    self.sendEmail = _sendEmail;    
+    self.sendEmail = _sendEmail; 
+    self.sendLogfile = _sendLogfile;
     
     function _sendEmail(t, file) {
 		return $cordovaEmailComposer.isAvailable().then(function() {
@@ -31,16 +32,36 @@ angular.module('blocks.email')
                 return $cordovaEmailComposer.open(email).catch(function(error) {
                     // user cancelled email
                     console.log('user canceled the email send');
+                    return $q.reject(error);
                 });                
             }).catch(function(e) {
                 console.info('There was a problem processing the array of image receipts...');
+                return $q.reject(e);
             });            
 
 		}).catch(function (error) {
 		   // not available
 			console.log('trouble with the email composer availability.');
+            return $q.reject(error);
 		});
 	}
+    
+    function _sendLogfile() {
+        return $fileLogger.checkFile().then(function(data) {
+            window.resolveLocalFileSystemURI(data.localURL, function(fileEntry) {
+                console.log(fileEntry.toURL());
+                var email = {
+                    to: 'jleininger@athletics.ucla.edu',
+                    subject: 'LOGFILE: reimbursement logfile',
+                    body: JSON.stringify(data),
+                    attachments: fileEntry.toURL()
+                };
+                return $cordovaEmailComposer.open(email);
+            });        
+        }).catch(function(e) {
+            return $q.reject(e);
+        });
+    }
     
     function _receiptArray(t) {
         var images = [];
@@ -48,7 +69,7 @@ angular.module('blocks.email')
         if (t && t.receipts) {
             t.receipts.forEach(function(r) {
                 chain = chain.then(function() {
-                    throw new Error('Simulated a failed image...');
+                    throw new Error('this is a dummy problem inserted during image attach...')
                     return _getAttachmentBlob(r, t);
                 }).then(function(blob) {
                     return _convertToBase64(blob);
