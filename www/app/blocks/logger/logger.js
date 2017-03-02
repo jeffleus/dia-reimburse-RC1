@@ -27,7 +27,7 @@
         function error(message, data, title) {
 //            $cordovaToast.show(message, title);
             $fileLogger.error(message);
-            $log.error('Error: ' + message, data);
+//            $log.error('Error: ' + message, data);
         }
 
         function info(message, data, title) {
