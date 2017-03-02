@@ -42,7 +42,7 @@ angular.module('starter.controllers')
     function _viewLog() {
         EmailSvc.sendLogfile()
         .catch(function(e) {
-            $ionicPopup({
+            $ionicPopup.alert({
                 title: 'Problem with Logfile',
                 template: e
             });
